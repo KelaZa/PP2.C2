@@ -111,6 +111,9 @@
 	  <MauiXaml Update="Views\HistorialestudiantePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\InicioPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ReporteRiesgoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

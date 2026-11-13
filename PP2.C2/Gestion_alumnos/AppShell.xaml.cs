@@ -4,6 +4,7 @@ namespace Gestion_alumnos
     public partial class AppShell : Shell
     {
         public AppShell(
+            InicioPage inicioPage,
             MainPage estudiantesPage,
             CalendarioPage calendarioPage,
             TrabajosPage trabajosPage,
@@ -17,6 +18,7 @@ namespace Gestion_alumnos
 
 
             Routing.RegisterRoute("HistorialEstudiante",typeof(HistorialEstudiantePage));
+            InicioTab.Content = inicioPage;
             EstudiantesTab.Content = estudiantesPage;
             CalendarioTab.Content = calendarioPage;
             TrabajosTab.Content = trabajosPage;

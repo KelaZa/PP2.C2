@@ -60,29 +60,45 @@
                         FontSize="14"
                         TextColor="#475569" />
 
-                    <Picker
-                        x:Name="ComisionPicker"
-                        Title="Comisión"
-                        ItemsSource="{Binding Comisiones}"
-                        SelectedItem="{Binding ComisionSeleccionada, Mode=TwoWay}"
+                    <Border
                         BackgroundColor="#F8FAFC"
-                        TextColor="#1E293B"
-                        TitleColor="#64748B" />
+                        Stroke="#B8C7D9"
+                        StrokeThickness="1"
+                        Padding="4,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Picker
+                            x:Name="ComisionPicker"
+                            Title="Seleccione una comisión"
+                            ItemsSource="{Binding Comisiones}"
+                            SelectedItem="{Binding ComisionSeleccionada, Mode=TwoWay}"
+                            TextColor="#1E293B"
+                            TitleColor="#64748B" />
+                    </Border>
 
                     <Label
                         Text="Fecha de clase"
                         FontSize="14"
                         TextColor="#475569" />
 
-                    <Picker
-                        x:Name="ClasePicker"
-                        Title="Seleccione una clase"
-                        ItemsSource="{Binding ClasesDisponibles}"
-                        SelectedItem="{Binding ClaseSeleccionada, Mode=TwoWay}"
-                        ItemDisplayBinding="{Binding Fecha, StringFormat='{0:dd/MM/yyyy}'}"
+                    <Border
                         BackgroundColor="#F8FAFC"
-                        TextColor="#1E293B"
-                        TitleColor="#64748B" />
+                        Stroke="#B8C7D9"
+                        StrokeThickness="1"
+                        Padding="4,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Picker
+                            x:Name="ClasePicker"
+                            Title="Seleccione una clase"
+                            ItemsSource="{Binding ClasesDisponibles}"
+                            SelectedItem="{Binding ClaseSeleccionada, Mode=TwoWay}"
+                            ItemDisplayBinding="{Binding Fecha, StringFormat='{0:dd/MM/yyyy}'}"
+                            TextColor="#1E293B"
+                            TitleColor="#64748B" />
+                    </Border>
 
                 </VerticalStackLayout>
 

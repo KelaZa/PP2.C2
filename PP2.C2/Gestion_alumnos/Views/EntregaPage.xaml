@@ -58,27 +58,43 @@
                         FontSize="14"
                         TextColor="#475569" />
 
-                    <Picker
-                        Title="Elegí una comisión"
-                        ItemsSource="{Binding Comisiones}"
-                        SelectedItem="{Binding ComisionSeleccionada, Mode=TwoWay}"
+                    <Border
                         BackgroundColor="#F8FAFC"
-                        TextColor="#1E293B"
-                        TitleColor="#64748B" />
+                        Stroke="#B8C7D9"
+                        StrokeThickness="1"
+                        Padding="4,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Picker
+                            Title="Seleccione una comisión"
+                            ItemsSource="{Binding Comisiones}"
+                            SelectedItem="{Binding ComisionSeleccionada, Mode=TwoWay}"
+                            TextColor="#1E293B"
+                            TitleColor="#64748B" />
+                    </Border>
 
                     <Label
                         Text="Trabajo práctico"
                         FontSize="14"
                         TextColor="#475569" />
 
-                    <Picker
-                        Title="Elegí un trabajo"
-                        ItemsSource="{Binding TrabajosDisponibles}"
-                        SelectedItem="{Binding TrabajoSeleccionado, Mode=TwoWay}"
-                        ItemDisplayBinding="{Binding Nombre}"
+                    <Border
                         BackgroundColor="#F8FAFC"
-                        TextColor="#1E293B"
-                        TitleColor="#64748B" />
+                        Stroke="#B8C7D9"
+                        StrokeThickness="1"
+                        Padding="4,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Picker
+                            Title="Seleccione un trabajo práctico"
+                            ItemsSource="{Binding TrabajosDisponibles}"
+                            SelectedItem="{Binding TrabajoSeleccionado, Mode=TwoWay}"
+                            ItemDisplayBinding="{Binding Nombre}"
+                            TextColor="#1E293B"
+                            TitleColor="#64748B" />
+                    </Border>
 
                 </VerticalStackLayout>
 

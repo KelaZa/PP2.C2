@@ -29,11 +29,13 @@ namespace Gestion_alumnos
             builder.Services.AddSingleton<CargaDatosPruebaService>();
 
             // Pantallas de nuestro sistema
+            builder.Services.AddTransient<InicioPage>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<CalendarioPage>();
 
             // Navegación principal
             builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddTransient<InicioViewModel>();
             builder.Services.AddTransient<AsistenciaPage>();
             builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<CalendarioViewModel>();

@@ -9,6 +9,11 @@
     <TabBar>
 
         <ShellContent
+            x:Name="InicioTab"
+            Title="Inicio"
+            Route="Inicio" />
+
+        <ShellContent
             x:Name="EstudiantesTab"
             Title="Estudiantes"
             Route="Estudiantes" />
