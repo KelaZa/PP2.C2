@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Gestion_alumnos.PanelPage"
+    Title="Panel de seguimiento"
+    BackgroundColor="#F3F6FA">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="18"
+            HorizontalOptions="Center"
+            WidthRequest="700">
+
+            <!-- ENCABEZADO -->
+            <VerticalStackLayout
+                Spacing="5"
+                HorizontalOptions="Center">
+
+                <Label
+                    Text="Panel de seguimiento"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="#193B68"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    Text="Monitoreo del riesgo académico de estudiantes"
+                    FontSize="14"
+                    TextColor="#64748B"
+                    HorizontalTextAlignment="Center" />
+
+            </VerticalStackLayout>
+
+            <!-- FILTROS -->
+            <Border
+                BackgroundColor="White"
+                Stroke="#DEE6EF"
+                StrokeThickness="1"
+                Padding="22">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        Text="Consultar riesgo académico"
+                        FontSize="21"
+                        FontAttributes="Bold"
+                        TextColor="#193B68" />
+
+                    <Label
+                        Text="Comisión"
+                        FontSize="14"
+                        TextColor="#475569" />
+
+                    <Picker
+                        Title="Seleccionar comisión"
+                        ItemsSource="{Binding Comisiones}"
+                        SelectedItem="{Binding ComisionSeleccionada, Mode=TwoWay}"
+                        BackgroundColor="#F8FAFC"
+                        TextColor="#1E293B"
+                        TitleColor="#64748B" />
+
+                    <Button
+                        Text="ACTUALIZAR RIESGOS"
+                        Command="{Binding ActualizarPanelCommand}"
+                        BackgroundColor="#16865D"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        WidthRequest="220"
+                        HeightRequest="46"
+                        HorizontalOptions="Center"
+                        Margin="0,12,0,0" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- MENSAJE DE ESTADO -->
+            <Label
+                Text="{Binding MensajeEstado}"
+                FontSize="14"
+                TextColor="#64748B"
+                HorizontalTextAlignment="Center" />
+
+            <!-- LISTADO DE RIESGOS -->
+            <VerticalStackLayout Spacing="12">
+
+                <Label
+                    Text="Situación de los estudiantes"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    TextColor="#193B68"
+                    HorizontalTextAlignment="Center" />
+
+                <CollectionView
+                    ItemsSource="{Binding EstudiantesRiesgo}"
+                    SelectionMode="None"
+                    HeightRequest="450">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#DEE6EF"
+                                StrokeThickness="1"
+                                Padding="18"
+                                Margin="0,0,0,12">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="10">
+
+                                    <!-- ESTUDIANTE -->
+                                    <Label
+                                        Text="{Binding NombreCompleto}"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        TextColor="#193B68" />
+
+                                    <!-- RIESGO TOTAL -->
+                                    <Border
+                                        BackgroundColor="#EEF3F9"
+                                        StrokeThickness="0"
+                                        Padding="12">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="8" />
+                                        </Border.StrokeShape>
+
+                                        <VerticalStackLayout Spacing="6">
+
+                                            <Label
+                                                Text="{Binding PorcentajeRiesgo, StringFormat='Riesgo total: {0:F1}%'}"
+                                                FontSize="18"
+                                                FontAttributes="Bold"
+                                                TextColor="#193B68" />
+
+                                            <Label
+                                                Text="{Binding NivelRiesgo, StringFormat='Nivel: {0}'}"
+                                                FontSize="16"
+                                                FontAttributes="Bold"
+                                                TextColor="#334155" />
+
+                                        </VerticalStackLayout>
+
+                                    </Border>
+
+                                    <!-- INDICADORES -->
+                                    <Label
+                                        Text="Indicadores académicos"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        TextColor="#193B68"
+                                        Margin="0,8,0,0" />
+
+                                    <Label
+                                        Text="{Binding PorcentajeInasistencias, StringFormat='Inasistencias: {0:F1}%'}"
+                                        FontSize="15"
+                                        TextColor="#334155" />
+
+                                    <Label
+                                        Text="{Binding PorcentajeNoEntregas, StringFormat='Trabajos no entregados: {0:F1}%'}"
+                                        FontSize="15"
+                                        TextColor="#334155" />
+
+                                    <!-- SEPARADOR -->
+                                    <BoxView
+                                        HeightRequest="1"
+                                        Color="#DEE6EF"
+                                        Margin="0,10,0,5" />
+
+                                    <!-- SEGUIMIENTO -->
+                                    <Label
+                                        Text="Seguimiento e intervenciones"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        TextColor="#193B68" />
+
+                                    <Label
+                                        Text="{Binding EstadoContacto}"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        TextColor="#334155" />
+
+                                    <Label
+                                        Text="{Binding UltimoContacto}"
+                                        FontSize="14"
+                                        TextColor="#475569" />
+
+                                    <Label
+                                        Text="{Binding CantidadIntervenciones}"
+                                        FontSize="14"
+                                        TextColor="#64748B" />
+
+                                    <!-- HISTORIAL -->
+                                    <Button
+                                        Text="VER HISTORIAL"
+                                        Clicked="VerHistorial_Clicked"
+                                        CommandParameter="{Binding Legajo}"
+                                        BackgroundColor="#2563A6"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        CornerRadius="8"
+                                        WidthRequest="180"
+                                        HeightRequest="42"
+                                        HorizontalOptions="Start"
+                                        Margin="0,10,0,0" />
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
