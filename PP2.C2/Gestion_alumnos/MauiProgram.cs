@@ -2,6 +2,12 @@
 using Microsoft.Extensions.Logging;
 using Gestion_alumnos.ViewModels;
 
+#if WINDOWS
+using Microsoft.Maui;
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+#endif
+
 namespace Gestion_alumnos
 {
     public static class MauiProgram
@@ -9,6 +15,19 @@ namespace Gestion_alumnos
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+#if WINDOWS
+            builder.ConfigureMauiHandlers(handlers =>
+            {
+                PickerHandler.Mapper.AppendToMapping(
+                    nameof(IPicker.Title),
+                    (handler, picker) => ConfigurarPickerWindows(handler, picker));
+
+                PickerHandler.Mapper.AppendToMapping(
+                    nameof(IPicker.TitleColor),
+                    (handler, picker) => ConfigurarPickerWindows(handler, picker));
+            });
+#endif
 
             builder
                 .UseMauiApp<App>()
@@ -50,5 +69,17 @@ namespace Gestion_alumnos
             builder.Services.AddTransient<ReporteRiesgoViewModel>();
             return builder.Build();
         }
+
+#if WINDOWS
+        private static void ConfigurarPickerWindows(IPickerHandler handler, IPicker picker)
+        {
+            var comboBox = handler.PlatformView;
+
+            comboBox.Header = null;
+            comboBox.HeaderTemplate = null;
+            comboBox.PlaceholderText = picker.Title ?? string.Empty;
+            comboBox.PlaceholderForeground = picker.TitleColor?.ToPlatform();
+        }
+#endif
     }
 }
