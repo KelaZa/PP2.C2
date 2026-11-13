@@ -32,6 +32,18 @@ namespace Gestion_alumnos.Servicios
             return await conexion.InsertAsync(estudiante);
         }
 
+        // IMPORTAR ESTUDIANTES EN BLOQUE
+        public async Task<int> ImportarEstudiantesAsync(
+            IReadOnlyList<Estudiante> estudiantes)
+        {
+            if (estudiantes.Count == 0)
+            {
+                return 0;
+            }
+
+            return await conexion.InsertAllAsync(estudiantes, true);
+        }
+
         // OBTENER ESTUDIANTES
         public async Task<List<Estudiante>> ObtenerEstudiantesAsync()
         {

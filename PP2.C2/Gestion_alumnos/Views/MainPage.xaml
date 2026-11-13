@@ -136,6 +136,25 @@
                         HorizontalOptions="Center"
                         Margin="0,12,0,0" />
 
+                    <!-- IMPORTAR DESDE CSV -->
+                    <Button
+                        Text="Importar desde CSV"
+                        Command="{Binding ImportarCsvCommand}"
+                        BackgroundColor="#2563A6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        WidthRequest="220"
+                        HeightRequest="46"
+                        HorizontalOptions="Center"
+                        Margin="0,4,0,0" />
+
+                    <Label
+                        Text="Formato: Legajo;Apellido;Nombre. La cabecera es opcional."
+                        FontSize="12"
+                        TextColor="#64748B"
+                        HorizontalTextAlignment="Center" />
+
                 </VerticalStackLayout>
 
             </Border>

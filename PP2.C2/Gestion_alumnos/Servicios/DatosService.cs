@@ -112,6 +112,26 @@ namespace Gestion_alumnos.Servicios
             Estudiantes.Add(estudiante);
         }
 
+        // IMPORTAR ESTUDIANTES EN BLOQUE
+        public async Task<int> ImportarEstudiantesAsync(
+            IReadOnlyList<Estudiante> estudiantes)
+        {
+            if (estudiantes.Count == 0)
+            {
+                return 0;
+            }
+
+            int insertados =
+                await baseDatosService.ImportarEstudiantesAsync(estudiantes);
+
+            foreach (Estudiante estudiante in estudiantes)
+            {
+                Estudiantes.Add(estudiante);
+            }
+
+            return insertados;
+        }
+
         // GUARDAR CLASE
         public async Task GuardarClaseAsync(Clase clase)
         {
